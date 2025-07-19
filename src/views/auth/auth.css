@@ -1,0 +1,291 @@
+/* ===================== 卡片容器布局 ===================== */
+.card-box {
+    width: 900px;
+    max-width: 95vw; /* 宽度最多占视口95%，防止超出 */
+    height: 600px;
+    max-height: 90vh; /* 高度限制，避免超高 */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    overflow: hidden;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+.card-left {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5f9ff, #e0ecff);
+    border-radius: 12px 0 0 12px;
+    box-sizing: border-box;
+    min-width: 280px;
+}
+
+.card-right {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 280px;
+}
+
+/* ===================== 登录表单样式 ===================== */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 420px; /* 限制最大宽度 */
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.login-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #004aad;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #004aad;
+}
+
+/* 输入框，按钮宽度自适应，填满父容器宽度 */
+.login-input,
+.login-button,
+.register-button {
+    width: 100%;      /* 宽度100%，适应父容器 */
+
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    border: 1px solid #a0b4ff;
+    transition: all 0.3s ease;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #004aad;
+    box-shadow: 0 0 5px #4a90e2;
+}
+
+.login-button {
+    border: none;
+    background-color: #004aad;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #00337f;
+}
+
+.register-button {
+    border: 1px solid #004aad;
+    background-color: #fff;
+    color: #004aad;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.register-button:hover {
+    background-color: #004aad;
+    color: #fff;
+}
+
+/* 其他登录相关样式 */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.login-options input {
+    margin-right: 5px;
+}
+
+.forgot-password {
+    color: #004aad;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* ===================== 左侧现代介绍模块 ===================== */
+.new-left-intro {
+    background: radial-gradient(circle at top left, #e6f0ff, #f5f9ff);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #1e3c72;
+    box-sizing: border-box;
+}
+
+.intro-top {
+    text-align: left;
+}
+
+.tagline {
+    font-size: 14px;
+    color: #4a6fa5;
+    margin-bottom: 8px;
+}
+
+.main-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #004aad;
+    margin-bottom: 10px;
+}
+
+.sub-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #3f5f8b;
+    margin-bottom: 30px;
+}
+
+.feature-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feature-card-item {
+    background-color: #fff3e0; /* 浅橙色 */
+    padding: 16px 20px;
+    border-left: 5px solid #ff8c00; /* 深橙色左边条 */
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #b35f00; /* 橙色字体 */
+    box-shadow: 0 2px 8px rgba(179, 95, 0, 0.1); /* 橙色阴影 */
+}
+
+.growth-slogan {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #446095;
+    font-weight: 500;
+    background: #d9e8ff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.04);
+    margin-top: 20px;
+}
+
+.intro-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 30px;
+}
+
+/* ===================== 响应式适配 ===================== */
+@media (max-width: 1024px) {
+    .card-left {
+        display: none; /* 隐藏左侧介绍 */
+    }
+    .card-box {
+        flex-direction: column;
+        height: auto;
+        width: 90vw;
+        max-width: 500px;
+        border-radius: 12px;
+    }
+
+    .card-left,
+    .card-right {
+        border-radius: 12px;
+        padding: 30px 20px;
+        min-width: auto;
+    }
+
+    .new-left-intro {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .card-left {
+        display: none; /* 隐藏左侧介绍 */
+    }
+    .card-box {
+        width: 90vw;
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        padding: 10px 0;
+    }
+
+    .card-left,
+    .card-right {
+        padding: 20px 15px;
+        min-width: auto;
+    }
+
+    .login-form {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .login-input,
+    .login-button,
+    .register-button {
+        max-width: 100%;
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .main-title {
+        font-size: 28px;
+    }
+
+    .sub-title {
+        font-size: 14px;
+    }
+
+    .feature-card-item {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .login-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .login-input,
+    .login-button,
+    .register-button {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .main-title {
+        font-size: 24px;
+    }
+}
