@@ -19,7 +19,7 @@ export default function Login() {
     };
 
     return (
-        <div className="page-center">
+        <div className="page-center auth-center">
             <div className="card-box">
                 {/* 左侧介绍 */}
                 <div className="card-left new-left-intro">

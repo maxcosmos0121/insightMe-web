@@ -1,3 +1,10 @@
+.auth-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 /* ===================== 卡片容器布局 ===================== */
 .card-box {
     width: 1000px;

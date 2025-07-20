@@ -4,4 +4,30 @@
   justify-content: center;
   align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .page-center {
+    padding: 20px;
+    align-items: flex-start;
+    padding-top: 20px;
+    height: 100%
+  }
+}
+
+@media (max-width: 480px) {
+  .page-center {
+    padding: 15px;
+    padding-top: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .page-center {
+    padding: 10px;
+    padding-top: 12px;
+  }
 }

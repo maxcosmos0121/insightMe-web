@@ -9,6 +9,7 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     padding: 24px;
     box-sizing: border-box;
+    overflow: hidden; /* 防止内容溢出 */
 }
 
 /* 主体左右布局 */
@@ -17,6 +18,7 @@
     gap: 24px;
     flex-direction: row;
     height: 100%;
+    min-height: 0; /* 允许收缩 */
 }
 
 /* 左右两栏 */
@@ -100,6 +102,8 @@
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .data-overview h2 {
@@ -115,27 +119,37 @@
 .overview-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 16px;
+    flex: 1;
+    min-height: 0;
 }
 
 .overview-item {
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px;
+    padding: 16px 12px;
     text-align: center;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.overview-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .overview-item .number {
-    font-size: 13px;
+    font-size: 24px;
     font-weight: bold;
     color: #000;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    line-height: 1;
 }
 
 .overview-item .label {
-    font-size: 18px;
+    font-size: 12px;
     color: #666;
+    line-height: 1.3;
 }
 
 /* 图标样式 */
@@ -144,11 +158,20 @@
 }
 
 /* 右侧面板样式 */
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 0; /* 允许内容收缩 */
+}
+
 .top-cards {
     display: flex;
     gap: 16px;
     height: 100%;
     max-height: 170px;
+    flex-shrink: 0; /* 防止收缩 */
 }
 
 .mood-card, .water-card {
@@ -157,6 +180,7 @@
     border-radius: 12px;
     padding: 16px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    min-width: 0; /* 防止flex项目溢出 */
 }
 
 .mood-card h3, .water-card h3 {
@@ -167,6 +191,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    white-space: nowrap; /* 防止标题换行 */
 }
 
 .mood-content, .water-content {
@@ -177,6 +202,8 @@
     border-radius: 8px;
     font-size: 24px;
     font-weight: bold;
+    text-align: center;
+    word-break: break-word; /* 允许长文本换行 */
 }
 
 .mood-content {
@@ -195,6 +222,10 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex: 1; /* 占据剩余空间 */
+    min-height: 0; /* 允许收缩 */
+    display: flex;
+    flex-direction: column;
 }
 
 .quick-actions-section h2 {
@@ -205,12 +236,15 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    flex-shrink: 0; /* 防止收缩 */
 }
 
 .quick-actions {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+    flex: 1; /* 占据剩余空间 */
+    overflow-y: auto; /* 如果内容过多可以滚动 */
 }
 
 .action-btn {
@@ -259,9 +293,26 @@
 
 /* 底部分类导航 */
 .category-nav {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0; /* 防止收缩 */
+}
+
+.category-nav h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.category-buttons {
     display: flex;
     gap: 12px;
-    margin-top: auto;
 }
 
 .category-btn {
@@ -269,34 +320,514 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    padding: 16px 12px;
+    gap: 6px;
+    padding: 14px 8px;
     border: none;
-    border-radius: 12px;
-    font-size: 14px;
+    border-radius: 10px;
+    font-size: 13px;
     font-weight: 500;
     color: #000;
     cursor: pointer;
     transition: all 0.2s ease;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
 }
 
 .finance-btn {
-    background-color: #ccfbf1;
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
 }
 
-.growth-btn {
+.finance-btn:hover {
     background-color: #dcfce7;
 }
 
-.health-btn {
+.growth-btn {
+    background-color: #fef7ed;
+    border-color: #fed7aa;
+}
+
+.growth-btn:hover {
     background-color: #fed7aa;
 }
 
+.health-btn {
+    background-color: #fef2f2;
+    border-color: #fecaca;
+}
+
+.health-btn:hover {
+    background-color: #fecaca;
+}
+
 .category-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
 }
 
 .category-btn .icon {
-    font-size: 20px;
+    font-size: 18px;
+}
+
+/* 响应式设计 */
+
+/* 大屏幕 (1200px 及以上) */
+@media (min-width: 1200px) {
+    .board {
+        max-width: 1400px;
+        padding: 32px;
+    }
+
+    .main-section {
+        gap: 32px;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+    }
+
+    .overview-item {
+        padding: 20px 16px;
+    }
+
+    .overview-item .number {
+        font-size: 28px;
+    }
+
+    .overview-item .label {
+        font-size: 13px;
+    }
+}
+
+/* 中等屏幕 (768px - 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .board {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .main-section {
+        gap: 20px;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+    }
+
+    .overview-item {
+        padding: 14px 10px;
+    }
+
+    .overview-item .number {
+        font-size: 22px;
+    }
+
+    .overview-item .label {
+        font-size: 11px;
+    }
+
+    .welcome-banner h1 {
+        font-size: 24px;
+    }
+
+    .data-overview h2,
+    .quick-actions-section h2 {
+        font-size: 20px;
+    }
+
+    /* 优化心情和喝水卡片 */
+    .top-cards {
+        gap: 12px;
+    }
+
+    .mood-card, .water-card {
+        padding: 14px;
+    }
+
+    .mood-card h3, .water-card h3 {
+        font-size: 15px;
+        gap: 4px;
+    }
+
+    .mood-content, .water-content {
+        height: 100px;
+        font-size: 22px;
+    }
+}
+
+/* 平板设备 (768px 及以下) */
+@media (max-width: 768px) {
+    .board {
+        max-width: 100%;
+        max-height: none;
+        padding: 16px;
+        border-radius: 12px;
+        overflow: visible; /* 允许内容溢出以便滚动 */
+    }
+
+    .main-section {
+        flex-direction: column;
+        gap: 16px;
+        min-height: auto; /* 允许自然高度 */
+    }
+
+    .left-panel {
+        flex: none;
+        min-height: auto;
+    }
+
+    .right-panel {
+        flex: none;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* 数据概览在移动端使用更紧凑的布局 */
+    .data-overview {
+        flex: none;
+        height: auto;
+    }
+
+    .overview-grid {
+        flex: none;
+        min-height: auto;
+    }
+
+    .welcome-banner {
+        max-height: none;
+        padding: 20px;
+    }
+
+    .welcome-banner h1 {
+        font-size: 22px;
+    }
+
+    .welcome-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .profile-btn, .logout-btn {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .overview-item {
+        padding: 12px 8px;
+    }
+
+    .overview-item .number {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+
+    .overview-item .label {
+        font-size: 11px;
+    }
+
+    .top-cards {
+        flex-direction: row;
+        max-height: 140px;
+        gap: 12px;
+    }
+
+    .mood-card, .water-card {
+        padding: 12px;
+        min-width: 120px;
+    }
+
+    .mood-card h3, .water-card h3 {
+        font-size: 14px;
+        gap: 3px;
+    }
+
+    .mood-content, .water-content {
+        height: 80px;
+        font-size: 18px;
+    }
+
+    .right-panel {
+        gap: 12px;
+        min-height: auto;
+    }
+
+    .top-cards {
+        flex-shrink: 0;
+    }
+
+    .quick-actions-section {
+        flex: none;
+        min-height: auto;
+    }
+
+    .quick-actions {
+        gap: 12px;
+        flex: none;
+        overflow-y: visible;
+    }
+
+    .category-nav {
+        flex-shrink: 0;
+    }
+
+    .action-btn {
+        padding: 16px;
+        font-size: 16px;
+    }
+
+    .category-nav {
+        padding: 16px;
+        flex: none;
+    }
+
+    .category-nav h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .category-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .category-btn {
+        flex-direction: row;
+        justify-content: center;
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .category-btn .icon {
+        font-size: 16px;
+    }
+}
+
+/* 手机设备 (480px 及以下) */
+@media (max-width: 480px) {
+    .board {
+        padding: 12px;
+        border-radius: 8px;
+        overflow: visible;
+    }
+
+    .main-section {
+        gap: 12px;
+        min-height: auto;
+    }
+
+    .right-panel {
+        gap: 10px;
+        min-height: auto;
+    }
+
+    .top-cards {
+        flex-shrink: 0;
+    }
+
+    .quick-actions-section {
+        flex: none;
+        min-height: auto;
+    }
+
+    .quick-actions {
+        flex: none;
+        overflow-y: visible;
+    }
+
+    .category-nav {
+        flex-shrink: 0;
+    }
+
+    .welcome-banner {
+        padding: 16px;
+    }
+
+    .welcome-banner h1 {
+        font-size: 20px;
+    }
+
+    .welcome-banner p {
+        font-size: 13px;
+    }
+
+    .data-overview {
+        padding: 16px;
+    }
+
+    .data-overview h2 {
+        font-size: 18px;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .overview-item {
+        padding: 10px 6px;
+    }
+
+    .overview-item .number {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+
+    .overview-item .label {
+        font-size: 10px;
+    }
+
+    .top-cards {
+        flex-direction: column;
+        max-height: none;
+        gap: 10px;
+    }
+
+    .mood-card, .water-card {
+        padding: 12px;
+        min-width: auto;
+    }
+
+    .mood-card h3, .water-card h3 {
+        font-size: 15px;
+        gap: 4px;
+    }
+
+    .mood-content, .water-content {
+        height: 60px;
+        font-size: 18px;
+    }
+
+    .quick-actions-section {
+        padding: 16px;
+    }
+
+    .quick-actions-section h2 {
+        font-size: 18px;
+    }
+
+    .action-btn {
+        padding: 14px;
+        font-size: 15px;
+    }
+
+    .category-nav {
+        padding: 12px;
+    }
+
+    .category-nav h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .category-btn {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .category-btn .icon {
+        font-size: 18px;
+    }
+}
+
+/* 超小屏幕 (320px 及以下) */
+@media (max-width: 320px) {
+    .board {
+        padding: 8px;
+        overflow: visible;
+    }
+
+    .right-panel {
+        gap: 8px;
+        min-height: auto;
+    }
+
+    .top-cards {
+        flex-shrink: 0;
+    }
+
+    .quick-actions-section {
+        flex: none;
+        min-height: auto;
+    }
+
+    .quick-actions {
+        flex: none;
+        overflow-y: visible;
+    }
+
+    .category-nav {
+        flex-shrink: 0;
+    }
+
+    .welcome-banner {
+        padding: 12px;
+    }
+
+    .welcome-banner h1 {
+        font-size: 18px;
+    }
+
+    .data-overview,
+    .quick-actions-section {
+        padding: 12px;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .overview-item {
+        padding: 8px 4px;
+    }
+
+    .overview-item .number {
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
+
+    .overview-item .label {
+        font-size: 9px;
+    }
+
+    .top-cards {
+        gap: 8px;
+    }
+
+    .mood-card, .water-card {
+        padding: 10px;
+    }
+
+    .mood-card h3, .water-card h3 {
+        font-size: 13px;
+        gap: 3px;
+    }
+
+    .mood-content, .water-content {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .category-nav {
+        padding: 10px;
+    }
+
+    .category-nav h2 {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    .action-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
 }

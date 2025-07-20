@@ -170,18 +170,21 @@ export default function Home() {
 
                         {/* 底部分类导航 */}
                         <div className="category-nav">
-                            <button className="category-btn finance-btn">
-                                <span className="icon">💰</span>
-                                理财
-                            </button>
-                            <button className="category-btn growth-btn">
-                                <span className="icon">📈</span>
-                                成长
-                            </button>
-                            <button className="category-btn health-btn">
-                                <span className="icon">💪</span>
-                                健康
-                            </button>
+            
+                            <div className="category-buttons">
+                                <button className="category-btn finance-btn">
+                                    <span className="icon">💰</span>
+                                    理财
+                                </button>
+                                <button className="category-btn growth-btn">
+                                    <span className="icon">📈</span>
+                                    成长
+                                </button>
+                                <button className="category-btn health-btn">
+                                    <span className="icon">💪</span>
+                                    健康
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
