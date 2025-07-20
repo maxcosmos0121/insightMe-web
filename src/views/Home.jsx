@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 export default function Home() {
+    const navigate = useNavigate();
+
+    const handleNavigation = (path) => {
+        navigate(path);
+    };
+
     return (
         <div className="page-center">
             <div className="board">
@@ -13,8 +20,8 @@ export default function Home() {
                             <h1>欢迎回来, 任宇恒</h1>
                             <p>坚持记录,发现更好的自己。每一天的感悟都是成长的见证。</p>
                             <div className="welcome-buttons">
-                                <button className="profile-btn">个人资料</button>
-                                <button className="logout-btn">退出登录</button>
+                                <button className="profile-btn" onClick={() => handleNavigation('/profile')}>个人资料</button>
+                                <button className="logout-btn" onClick={() => handleNavigation('/login')}>退出登录</button>
                             </div>
                         </div>
 
@@ -140,27 +147,27 @@ export default function Home() {
                                 快速操作
                             </h2>
                             <div className="quick-actions">
-                                <button className="action-btn diary-btn">
+                                <button className="action-btn diary-btn" onClick={() => handleNavigation('/diary')}>
                                     <span className="icon">📄</span>
                                     每日日记
                                 </button>
-                                <button className="action-btn checkin-btn">
+                                <button className="action-btn checkin-btn" onClick={() => handleNavigation('/checkin')}>
                                     <span className="icon">✅</span>
                                     日常打卡
                                 </button>
-                                <button className="action-btn inspiration-btn">
+                                <button className="action-btn inspiration-btn" onClick={() => handleNavigation('/inspiration')}>
                                     <span className="icon">💡</span>
                                     灵感一现
                                 </button>
-                                <button className="action-btn plan-btn">
+                                <button className="action-btn plan-btn" onClick={() => handleNavigation('/plan')}>
                                     <span className="icon">📋</span>
                                     计划清单
                                 </button>
-                                <button className="action-btn network-btn">
+                                <button className="action-btn network-btn" onClick={() => handleNavigation('/network')}>
                                     <span className="icon">🌐</span>
                                     人脉网络
                                 </button>
-                                <button className="action-btn water-record-btn">
+                                <button className="action-btn water-record-btn" onClick={() => handleNavigation('/water')}>
                                     <span className="icon">💧</span>
                                     喝水记录
                                 </button>
@@ -172,15 +179,15 @@ export default function Home() {
                         <div className="category-nav">
             
                             <div className="category-buttons">
-                                <button className="category-btn finance-btn">
+                                <button className="category-btn finance-btn" onClick={() => handleNavigation('/finance')}>
                                     <span className="icon">💰</span>
                                     理财
                                 </button>
-                                <button className="category-btn growth-btn">
+                                <button className="category-btn growth-btn" onClick={() => handleNavigation('/growth')}>
                                     <span className="icon">📈</span>
                                     成长
                                 </button>
-                                <button className="category-btn health-btn">
+                                <button className="category-btn health-btn" onClick={() => handleNavigation('/health')}>
                                     <span className="icon">💪</span>
                                     健康
                                 </button>
