@@ -1,1 +1,150 @@
+/* 布局整体 */
+.profile-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  min-height: 500px;
+  margin-bottom: 24px; /* 统一底部 margin */
+}
 
+/* 左侧菜单 */
+.profile-menu {
+  width: 210px;
+  background: #f7fafd;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  padding: 32px 0 32px 0;
+  margin-right: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.menu-item {
+  padding: 14px 32px; /* 统一菜单项 padding */
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  margin-bottom: 2px;
+}
+.menu-item:last-child {
+  margin-bottom: 0;
+}
+.menu-item:hover {
+  background: #eaf2ff;
+  color: #1769ff;
+}
+.menu-item.active {
+  background: #eaf2ff;
+  color: #1769ff;
+  font-weight: 600;
+  border-left: 3px solid #1769ff;
+}
+
+/* 右侧内容区 */
+.profile-content {
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 32px 36px 36px 36px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+/* 表单分组内容 */
+.profile-form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-top: 18px;
+  align-items: stretch;
+  margin-bottom: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.form-group label {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px; /* 统一 label margin-bottom */
+  color: #333;
+}
+.profile-form-section input,
+.profile-form-section select {
+  padding: 10px 14px; /* 统一输入框 padding */
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #fafdff;
+  transition: border 0.2s;
+  width: 100%;
+  margin-bottom: 0;
+}
+.profile-form-section input:focus,
+.profile-form-section select:focus {
+  border-color: #1769ff;
+  outline: none;
+}
+.save-btn {
+  margin-top: 20px; /* 统一按钮 margin-top */
+  background: #1769ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px; /* 统一按钮 padding */
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.save-btn:hover {
+  background: #1558c0;
+}
+
+/* 适配移动端 */
+@media (max-width: 900px) {
+  .profile-layout {
+    flex-direction: column;
+    margin-bottom: 12px;
+  }
+  .profile-menu {
+    width: 100%;
+    flex-direction: row;
+    margin-right: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    gap: 0;
+  }
+  .menu-item {
+    flex: 1;
+    text-align: center;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    padding: 14px 0; /* 统一菜单项 padding */
+    margin-bottom: 0;
+  }
+  .menu-item.active {
+    border-left: none;
+    border-bottom: 3px solid #1769ff;
+  }
+  .profile-content {
+    padding: 16px 20px 24px 20px;
+    border-radius: 0 0 12px 12px;
+    margin: 0;
+  }
+  .profile-form-section {
+    padding-top: 8px;
+    margin-bottom: 0;
+  }
+}
