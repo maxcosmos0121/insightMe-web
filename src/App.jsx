@@ -14,6 +14,7 @@ import Water from "./views/water/Water";
 import Finance from "./views/finance/Finance";
 import Growth from "./views/growth/Growth";
 import Health from "./views/health/Health";
+import WriteDiary from './views/diary/WriteDiary';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/home" element={<Home/>}/>
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="/diary" element={<Diary/>}/>
+                <Route path="/diary/write" element={<WriteDiary/>}/>
                 <Route path="/checkin" element={<Checkin/>}/>
                 <Route path="/inspiration" element={<Inspiration/>}/>
                 <Route path="/plan" element={<Plan/>}/>
